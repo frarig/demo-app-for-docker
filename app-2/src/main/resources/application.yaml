@@ -1,0 +1,4 @@
+server:
+  port: 8080
+
+host: http://app-1:8081/hello/
