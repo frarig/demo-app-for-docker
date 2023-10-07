@@ -1,0 +1,29 @@
+version: "3"
+services:
+  app-1:
+    build:
+      context: .
+      dockerfile: ./app-1/Dockerfile
+    restart: always
+    container_name: app-1
+    networks:
+      - demo-app-docker
+
+  app-2:
+    build:
+      context: .
+      dockerfile: ./app-1/Dockerfile
+    restart: always
+    container_name: app-2
+    ports:
+      - "8080:8080"
+    networks:
+      - demo-app-docker
+    depends_on:
+      - app-1
+
+networks:
+  demo-app-docker:
+    driver: bridge
+
+
